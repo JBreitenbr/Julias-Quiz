@@ -7,7 +7,7 @@ function refreshPage() {
   return (
     <div className="result_container">
       <p className="result">
-       { /*<span>{emoji}</span>*/}You scored <strong>{points}</strong> out of{" "}
+       You scored <strong>{points}</strong> out of{" "}
         {maxPossiblePoints} ({Math.ceil(percentage)}%)
       </p>
       <p>You answered <strong>{ans}</strong> questions out of {numQuestions} correctly.</p>

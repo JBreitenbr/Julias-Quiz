@@ -16,6 +16,7 @@ import {shuffle} from './shuffle.js'
   points: 0,
   highscore: 0,
   secondsRemaining: null,
+  maxPoints:0,
   ans:0
 };
 let SECS_PER_QUESTION=5; 
@@ -48,6 +49,9 @@ function reducer(state, action) {
             ? state.points + question.points
             : state.points,
         ans:action.payload===question.correctOption?state.ans+1:state.ans,
+        maxPoints:state.questions.reduce(
+    (prev, cur) => prev + cur.points,
+    0)
       };
     case "nextQuestion":
       return { ...state, index: state.index + 1, answer: null };
@@ -61,10 +65,10 @@ function reducer(state, action) {
   }}
 export default function App() {
   const [
-    { questions, status, index, answer, points, highscore, secondsRemaining,ans },
+    { questions, status, index, answer, points, highscore, secondsRemaining,maxPoints,ans },
     dispatch,
   ] = useReducer(reducer, initialState);  
-const [numQuestions,setNumQuestions]=useState(5);
+const [numQuestions,setNumQuestions]=useState(10);
 const maxPossiblePoints = questions.reduce(
     (prev, cur) => prev + cur.points,
     0
@@ -73,6 +77,9 @@ const [cat,setCat]=useState("");
 const handleCat = (event) => {
 setCat(event.target.value);
 };
+const handleNum = (event) => {
+  setNumQuestions(event.target.value)
+}
 const [timed,setTimed]=useState(false);
 const handleTimed = (event) => setTimed(event.target.checked);
 let v;
@@ -90,7 +97,7 @@ if(cat.length>0){
 .catch((err) => dispatch({ type: "dataFailed" }))
   }, [cat]);
   return (
-    <div className="wrapper">{status === "loading" && <Loader />}{status === "ready" && <StartScreen dispatch={dispatch} cat={cat} handleCat={handleCat} timed={timed} handleTimed={handleTimed} />}{status === "active" && (<div><h2>
+    <div className="wrapper">{status === "loading" && <Loader />}{status === "ready" && <StartScreen dispatch={dispatch} numQuestions={numQuestions} handleNum={handleNum} cat={cat} handleCat={handleCat} timed={timed} handleTimed={handleTimed} />}{status === "active" && (<div><h2>
         Question <strong>{index + 1}</strong> / {numQuestions}
       </h2><Question
                   question={questions[index]}
@@ -106,7 +113,7 @@ if(cat.length>0){
                 ans={ans}
                 numQuestions={numQuestions}
                 points={points}
-                maxPossiblePoints={maxPossiblePoints}
+                maxPossiblePoints={maxPoints}
                 highscore={highscore}
                 dispatch={dispatch}
               />
