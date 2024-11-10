@@ -14,6 +14,7 @@ import {shuffle} from './shuffle.js'
   index: 0,
   answer: null,
   points: 0,
+  spunk:0,
   highscore: 0,
   secondsRemaining: null,
   maxPoints:0,
@@ -49,9 +50,7 @@ function reducer(state, action) {
             ? state.points + question.points
             : state.points,
         ans:action.payload===question.correctOption?state.ans+1:state.ans,
-        maxPoints:state.questions.reduce(
-    (prev, cur) => prev + cur.points,
-    0)
+ spunk:state.spunk+question.points,       maxPoints:state.spunk+question.points 
       };
     case "nextQuestion":
       return { ...state, index: state.index + 1, answer: null };
@@ -65,7 +64,7 @@ function reducer(state, action) {
   }}
 export default function App() {
   const [
-    { questions, status, index, answer, points, highscore, secondsRemaining,maxPoints,ans },
+    { questions, status, index, answer, points, highscore, secondsRemaining,maxPoints,spunk,ans },
     dispatch,
   ] = useReducer(reducer, initialState);  
 const [numQuestions,setNumQuestions]=useState(10);

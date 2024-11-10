@@ -1,14 +1,20 @@
 function Options({ question, dispatch, answer }) {
   const hasAnswered = answer !== null;
-       
+      let r=question["options"][question.correctOption];
+  let s=question["options"][answer];
   return (
     <div>
-      {question.options.map((option, index) => (
-        <button
-          className={`btn btn-option ${index === answer ? "answer" : ""} ${
+      {s}
+      <br/>
+      {r}<br/>
+      {question.difficulty}<br/>
+    <div className="flex flex-col">
+    {question.options.map((option, index) => (
+        <button style={{border:"1px solid darkred",borderRadius:"12px"}}
+          className={`m-4 btn btn-option ${index === answer ? r==s?"answerc" : "answerw":""} ${
             hasAnswered
               ? index === question.correctOption
-                ? "correct"
+                ? "answerc"
                 : "wrong"
               : ""
           }`}
@@ -18,7 +24,7 @@ function Options({ question, dispatch, answer }) {
         >
           {option}
         </button>
-      ))}
+      ))}</div>
     </div>
   );
 }
