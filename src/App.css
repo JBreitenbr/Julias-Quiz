@@ -7,7 +7,18 @@ body {
   font-family: "Montserrat", sans-serif;
   background-color: #f5f5f5;
 }
-
+.btn {
+  display: block;
+  font-family: inherit;
+  color: inherit;
+  font-size: 18px;
+  border: 2px solid papayawhip;
+  background-color: papayawhip;
+  padding: 1.2rem 2.4rem;
+  cursor: pointer;
+  border-radius: 100px;
+  transition: 0.3s;
+}
 .answerc {
   background-color: darkgreen;
 }

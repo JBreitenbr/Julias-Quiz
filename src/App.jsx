@@ -14,13 +14,13 @@ import {shuffle} from './shuffle.js'
   index: 0,
   answer: null,
   points: 0,
-  spunk:0,
+  hlp:0,
   highscore: 0,
-  secondsRemaining: null,
+  /*secondsRemaining: null,*/
   maxPoints:0,
   ans:0
 };
-let SECS_PER_QUESTION=5; 
+
 function reducer(state, action) {
   switch (action.type) {
     case "dataReceived":
@@ -38,7 +38,7 @@ function reducer(state, action) {
       return {
         ...state,
         status: "active",
-        secondsRemaining: state.questions.length * SECS_PER_QUESTION,
+       /* secondsRemaining: state.questions.length * SECS_PER_QUESTION,*/
       };
     case "newAnswer":
       const question = state.questions.at(state.index);
@@ -50,7 +50,7 @@ function reducer(state, action) {
             ? state.points + question.points
             : state.points,
         ans:action.payload===question.correctOption?state.ans+1:state.ans,
- spunk:state.spunk+question.points,       maxPoints:state.spunk+question.points 
+ hlp:state.hlp+question.points,       maxPoints:state.hlp+question.points 
       };
     case "nextQuestion":
       return { ...state, index: state.index + 1, answer: null };
@@ -61,17 +61,29 @@ function reducer(state, action) {
         highscore:
           state.points > state.highscore ? state.points : state.highscore,
       };
+case "tick":
+      return {
+        ...state,
+        secondsRemaining: state.secondsRemaining - 1,
+        highscore:
+          state.secondsRemaining === 0
+            ? state.points > state.highscore
+              ? state.points
+              : state.highscore
+            : state.highscore,
+        status: state.secondsRemaining === 0 ? "finished" : state.status,
+      };
+
+    default:
+      throw new Error("Action unknown");
   }}
 export default function App() {
   const [
-    { questions, status, index, answer, points, highscore, secondsRemaining,maxPoints,spunk,ans },
+    { questions, status, index, answer, points, highscore, maxPoints,hlp,ans },
     dispatch,
   ] = useReducer(reducer, initialState);  
 const [numQuestions,setNumQuestions]=useState(10);
-const maxPossiblePoints = questions.reduce(
-    (prev, cur) => prev + cur.points,
-    0
-  );
+
 const [cat,setCat]=useState("");
 const handleCat = (event) => {
 setCat(event.target.value);
@@ -79,8 +91,7 @@ setCat(event.target.value);
 const handleNum = (event) => {
   setNumQuestions(event.target.value)
 }
-const [timed,setTimed]=useState(false);
-const handleTimed = (event) => setTimed(event.target.checked);
+
 let v;
 if(cat.length>0){
   v=(item)=>item.category==cat;
@@ -88,7 +99,7 @@ if(cat.length>0){
   v=(item)=>item;
 }
   useEffect(function () {
-    fetch("https://raw.githubusercontent.com/JBreitenbr/psychic-meme/refs/heads/main/questions.json")
+    fetch("https://raw.githubusercontent.com/JBreitenbr/psychic-meme/refs/heads/main/questions3.json")
       .then((res) => res.json())
       .then((data) =>dispatch({
           type: "dataReceived",payload:
@@ -96,7 +107,7 @@ if(cat.length>0){
 .catch((err) => dispatch({ type: "dataFailed" }))
   }, [cat]);
   return (
-    <div className="wrapper">{status === "loading" && <Loader />}{status === "ready" && <StartScreen dispatch={dispatch} numQuestions={numQuestions} handleNum={handleNum} cat={cat} handleCat={handleCat} timed={timed} handleTimed={handleTimed} />}{status === "active" && (<div><h2>
+    <div className="wrapper">{status === "loading" && <Loader />}{status === "ready" && <StartScreen dispatch={dispatch} numQuestions={numQuestions} handleNum={handleNum} cat={cat} handleCat={handleCat} />}{status === "active" && (<div><h2>
         Question <strong>{index + 1}</strong> / {numQuestions}
       </h2><Question
                   question={questions[index]}

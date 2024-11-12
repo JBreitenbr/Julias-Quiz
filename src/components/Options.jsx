@@ -1,5 +1,6 @@
 function Options({ question, dispatch, answer }) {
   const hasAnswered = answer !== null;
+  question["options"]=question["optString"].split("/");
       let r=question["options"][question.correctOption];
   let s=question["options"][answer];
   return (
