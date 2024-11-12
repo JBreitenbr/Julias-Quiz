@@ -99,7 +99,7 @@ if(cat.length>0){
   v=(item)=>item;
 }
   useEffect(function () {
-    fetch("https://raw.githubusercontent.com/JBreitenbr/psychic-meme/refs/heads/main/questions3.json")
+    fetch("https://raw.githubusercontent.com/JBreitenbr/Julias-Quiz/refs/heads/main/src/QuizData/questions.json")
       .then((res) => res.json())
       .then((data) =>dispatch({
           type: "dataReceived",payload:
