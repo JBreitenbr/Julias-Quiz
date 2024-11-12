@@ -31,3 +31,10 @@ body {
   background-color: darkred;
   transition: 1s;
 }
+
+.star-svg{
+  background-color:#690f0f;
+}
+.star-svg path{
+  fill: #c5c5c5;
+}
