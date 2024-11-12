@@ -82,7 +82,7 @@ export default function App() {
     { questions, status, index, answer, points, highscore, maxPoints,hlp,ans },
     dispatch,
   ] = useReducer(reducer, initialState);  
-const [numQuestions,setNumQuestions]=useState(10);
+const [numQuestions,setNumQuestions]=useState(20);
 
 const [cat,setCat]=useState("");
 const handleCat = (event) => {

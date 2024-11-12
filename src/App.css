@@ -21,8 +21,10 @@ body {
 }
 .answerc {
   background-color: darkgreen;
+  transition: 5s;
 }
 
 .answerw {
   background-color: darkred;
+  transition: 1s;
 }
