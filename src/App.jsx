@@ -9,14 +9,12 @@ import {shuffle} from './shuffle.js'
 
   const initialState = {
   questions: [],
-  // 'loading', 'error', 'ready', 'active', 'finished'
   status: "loading",
   index: 0,
   answer: null,
   points: 0,
   hlp:0,
   highscore: 0,
-  /*secondsRemaining: null,*/
   maxPoints:0,
   ans:0
 };
@@ -38,7 +36,6 @@ function reducer(state, action) {
       return {
         ...state,
         status: "active",
-       /* secondsRemaining: state.questions.length * SECS_PER_QUESTION,*/
       };
     case "newAnswer":
       const question = state.questions.at(state.index);
@@ -58,28 +55,13 @@ function reducer(state, action) {
       return {
         ...state,
         status: "finished",
-        highscore:
-          state.points > state.highscore ? state.points : state.highscore,
       };
-case "tick":
-      return {
-        ...state,
-        secondsRemaining: state.secondsRemaining - 1,
-        highscore:
-          state.secondsRemaining === 0
-            ? state.points > state.highscore
-              ? state.points
-              : state.highscore
-            : state.highscore,
-        status: state.secondsRemaining === 0 ? "finished" : state.status,
-      };
-
     default:
       throw new Error("Action unknown");
   }}
 export default function App() {
   const [
-    { questions, status, index, answer, points, highscore, maxPoints,hlp,ans },
+    { questions, status, index, answer, points, maxPoints,ans },
     dispatch,
   ] = useReducer(reducer, initialState);  
 const [numQuestions,setNumQuestions]=useState(20);
