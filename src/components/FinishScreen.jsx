@@ -1,21 +1,20 @@
-function FinishScreen({ ans,numQuestions,points, maxPossiblePoints, highscore, dispatch }) {
+function FinishScreen({ ans,numQuestions,points, maxPossiblePoints }) {
   const percentage = (points / maxPossiblePoints) * 100;
   
 function refreshPage() {
     window.location.reload(false);
 }
   return (
-    <div className="result_container">
+    <div className="flex flex-col justify-center items-center">
       <p className="result">
        You scored <strong>{points}</strong> out of{" "}
         {maxPossiblePoints} ({Math.ceil(percentage)}%)
       </p>
       <p>You answered <strong>{ans}</strong> questions out of {numQuestions} correctly.</p>
-      {/* <p className="highscore">(Highscore: {highscore} points)</p>*/}
       
       <button
         className="btn btn-ui"
-        onClick={() => /*dispatch({ type: "restart" })*/refreshPage()}
+        onClick={() => refreshPage()}
       >
         Restart quiz
       </button>
