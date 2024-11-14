@@ -6,17 +6,16 @@ function Options({ question, dispatch, answer }) {
       let r=question["options"][question.correctOption];
   let s=question["options"][answer];
   return (<div>
-<div className="flex flex-col m-4"><p>Category: {question.category}</p><p>{diffDic[question["difficulty"]]}</p></div>
+<div className="flex flex-col m-4"><div>Category: {question.category}</div><div>{diffDic[question["difficulty"]]}</div></div>
     <div className="flex flex-col">
     {question.options.map((option, index) => (
-        <button style={{border:"1px solid darkred",borderRadius:"12px"}}
-          className={`m-2 btn btn-option  ${
+        <button className={`m-2 btn btn-option  ${
             hasAnswered
               ? index === question.correctOption && r!=s
-                ? "answerd"
-                : "wrong"
+                ? "answer-right-unselected"
+                : ""
               : ""
-          } ${index === answer ? r==s?"answerc" : "answerw":""}`}
+          } ${index === answer ? r==s?"answer-right-selected" : "answer-wrong":""}`}
           key={index}
           disabled={hasAnswered}
           onClick={() => dispatch({ type: "newAnswer", payload: index })}

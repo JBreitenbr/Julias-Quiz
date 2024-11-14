@@ -5,30 +5,32 @@
 
 body {
   font-family: "Makazi", sans-serif;
-  background-color: #f5f5f5;
+  min-height: 100vh;
+  color: #f5f6f7;
+  background-color: #3c5f57;
+  padding: 2rem;
 }
 .btn {
   display: block;
   font-family: inherit;
-  color: inherit;
+  color: #33323d;
   font-size: 18px;
-  border: 2px solid papayawhip;
-  background-color: papayawhip;
-  padding: 1.2rem 2.4rem;
+  border: 2px solid #437373;
+  background-color: #f5f6f7;
+  padding: 1.2rem /*2.4rem*/;
   cursor: pointer;
   border-radius: 100px;
   transition: 0.3s;
 }
-.answerc {
-  background-color: darkgreen;
-  /*transition: 1s;*/
+.answer-right-selected {
+  background-color: #119e7d;
 }
-.answerd {
-  background-color: darkgreen;
+.answer-right-unselected {
+  background-color: #119e7d;
   transition: 5s;
 }
-.answerw {
-  background-color: darkred;
+.answer-wrong {
+  background-color: #f29255;
   transition: 1s;
 }
 
