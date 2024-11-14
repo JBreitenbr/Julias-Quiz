@@ -16,6 +16,9 @@ h1 {
 h2 {
   font-size: calc(100vmin - 93vmin);
 }
+.quest-size {
+  font-size: calc(100vmin - 94vmin);
+}
 
 h3,.quest-num {
   font-size: calc(100vmin - 95vmin);
