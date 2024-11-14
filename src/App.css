@@ -1,15 +1,25 @@
-@import url("https://fonts.googleapis.com/css2?family=Makazi&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Varela+Round&display=swap");
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 body {
-  font-family: "Makazi", sans-serif;
+  font-family: "Varela Round", sans-serif;
   min-height: 100vh;
   color: #f5f6f7;
   background-color: #3c5f57;
-  padding: 2rem;
+  /*padding: 2rem;*/
 }
+h1 {
+  font-size: calc(100vmin - 91.5vmin);
+}
+h2 {
+  font-size: calc(100vmin - 93vmin);
+}
+.quest-num {
+  font-size: calc(100vmin - 95vmin);
+}
+
 .btn {
   display: block;
   font-family: inherit;
