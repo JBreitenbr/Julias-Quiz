@@ -6,13 +6,17 @@ import Question from './components/Question.jsx'
 import NextButton from './components/NextButton.jsx'
 import FinishScreen from './components/FinishScreen.jsx'
 import {shuffle} from './shuffle.js'
-
+  const diffToPoints = {
+  easy: 10,
+  medium: 20,
+  hard: 30,
+}
   const initialState = {
   questions: [],
   status: "loading",
   index: 0,
   answer: null,
-  points: 0,
+  pnts: 0,
   hlp:0,
   highscore: 0,
   maxPoints:0,
@@ -42,12 +46,12 @@ function reducer(state, action) {
       return {
         ...state,
         answer: action.payload,
-        points:
+        pnts:
           action.payload === question.correctOption
-            ? state.points + question.points
-            : state.points,
+            ? state.pnts + diffToPoints[question.difficulty]
+            : state.pnts,
         ans:action.payload===question.correctOption?state.ans+1:state.ans,
- hlp:state.hlp+question.points,       maxPoints:state.hlp+question.points 
+ hlp:state.hlp+diffToPoints[question.difficulty],       maxPoints:state.hlp+diffToPoints[question.difficulty],
       };
     case "nextQuestion":
       return { ...state, index: state.index + 1, answer: null };
@@ -61,7 +65,7 @@ function reducer(state, action) {
   }}
 export default function App() {
   const [
-    { questions, status, index, answer, points, maxPoints,ans },
+    { questions, status, index, answer, pnts, maxPoints,ans },
     dispatch,
   ] = useReducer(reducer, initialState);  
 const [numQuestions,setNumQuestions]=useState(20);
@@ -104,7 +108,7 @@ if(cat.length>0){
               <FinishScreen
                 ans={ans}
                 numQuestions={numQuestions}
-                points={points}
+                points={pnts}
                 maxPossiblePoints={maxPoints}
               />
             )}
