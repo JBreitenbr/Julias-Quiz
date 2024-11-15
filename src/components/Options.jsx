@@ -3,7 +3,7 @@ import Star from './Star'
 function Options({ question, dispatch, answer,width }) {
   const hasAnswered = answer !== null;
   question["options"]=question["optString"].split("/");
-  let diffDic={"easy":<div  className="flex sn">Difficulty: &nbsp;<Star/></div>,"medium":<div className="flex sm">Difficulty: &nbsp;<Star/><Star/></div>,"hard":<div className="flex sm">Difficulty: &nbsp;<Star/><Star/><Star/></div>}
+  let diffDic={"easy":<div  className="flex sm">Difficulty: &nbsp;<Star/></div>,"medium":<div className="flex sm">Difficulty: &nbsp;<Star/><Star/></div>,"hard":<div className="flex sm">Difficulty: &nbsp;<Star/><Star/><Star/></div>}
       let r=question["options"][question.correctOption];
   let s=question["options"][answer];
   return (<div>
