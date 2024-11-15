@@ -1,5 +1,5 @@
 const QuestionMark = () => {
-  return <div className="question-mark"><svg className="question-mark-svg" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/2000/xlink" x="0px" y="0px" width="500px" height="180px" viewBox="0 0 500 180" xmlSpace="preserve" transform="translate(-20 -40)" >
+  return <div className="question-mark"><svg className="question-mark-svg" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/2000/xlink" x="0px" y="0px" width="500px" height="180px" viewBox="0 0 500 180" xmlSpace="preserve" transform="translate(-20 -40) scale(1.3)" >
 <path fillRule="evenodd" clipRule="evenodd" fill="#f5f6f7" d="M271.346,79.721c-22.935-0.015-41.855,18.864-41.865,41.774
 	c-0.009,23.403,18.722,42.228,42.013,42.225c23.185-0.003,41.988-18.82,41.985-42.013C313.477,98.474,294.673,79.737,271.346,79.721
 	z M272.383,149.558c-3.299,0.027-5.461-2.08-5.474-5.332c-0.014-3.298,2.089-5.447,5.347-5.464c3.22-0.017,5.461,2.198,5.462,5.396

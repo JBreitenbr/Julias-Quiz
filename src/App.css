@@ -21,17 +21,20 @@ h2 {
 }
 
 h3,.quest-num {
-  font-size: calc(100vmin - 95vmin);
+  font-size: 20px;
 }
 
+h4{
+  font-size: calc(100vmin - 95vmin);
+}
 .btn {
   display: block;
   font-family: inherit;
-  color: #33323d;
+  color: #437373;
   font-size: 18px;
   border: 2px solid #437373;
   background-color: #f5f6f7;
-  padding: 1.2rem /*2.4rem*/;
+  padding: 1.2rem ;
   cursor: pointer;
   border-radius: 100px;
   transition: 0.3s;
@@ -53,4 +56,9 @@ h3,.quest-num {
 }
 .star-svg path{
   fill: #c5c5c5;
+}
+.result {
+  background-color: #f5f6f7;
+  color: #3c5f57;
+  border-radius: calc(2vmin + 7px);
 }
