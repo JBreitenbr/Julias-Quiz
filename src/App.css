@@ -21,7 +21,7 @@ h2 {
   font-size: calc(100vmin - 93vmin);
 }
 .quest,.quest-num {
-  font-size: calc(100vmin - 97vmin);
+  font-size: calc(100vmin - 95.5vmin);
 }
 
 .sm {
@@ -70,5 +70,6 @@ h4{
 .result {
   background-color: #f5f6f7;
   color: #3c5f57;
+  font-size: calc(100vmin - 96vmin);
   border-radius: calc(2vmin + 7px);
 }
