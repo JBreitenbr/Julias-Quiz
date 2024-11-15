@@ -96,9 +96,9 @@ if(cat.length>0){
 .catch((err) => dispatch({ type: "dataFailed" }))
   }, [cat]);
   return (
-    <div className="wrapper">{status === "loading" && <Loader />}{status === "ready" && <StartScreen dispatch={dispatch} numQuestions={numQuestions} handleNum={handleNum} cat={cat} handleCat={handleCat} />}{status === "active" && (<div><h2 className="text-center mt-6">
+    <div className="wrapper">{status === "loading" && <Loader />}{status === "ready" && <StartScreen dispatch={dispatch} numQuestions={numQuestions} handleNum={handleNum} cat={cat} handleCat={handleCat} />}{status === "active" && (<div><p className="text-center mt-6 question">
         Question {index + 1} / {numQuestions}
-      </h2><Question
+      </p><Question
                   question={questions[index]}
                   dispatch={dispatch}
                   answer={answer}

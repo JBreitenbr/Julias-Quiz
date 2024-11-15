@@ -10,8 +10,12 @@ body {
   background-color: #3c5f57;
   /*padding: 2rem;*/
 }
+
 h1 {
   font-size: calc(100vmin - 91.5vmin);
+}
+.question {
+  font-size: calc(100vmin - 92.5vmin);
 }
 h2 {
   font-size: calc(100vmin - 93vmin);
