@@ -3,11 +3,11 @@ import Star from './Star'
 function Options({ question, dispatch, answer,width }) {
   const hasAnswered = answer !== null;
   question["options"]=question["optString"].split("/");
-  let diffDic={"easy":<h3 className="flex">Difficulty: &nbsp;<Star/></h3>,"medium":<h3 className="flex">Difficulty: &nbsp;<Star/><Star/></h3>,"hard":<h3 className="flex">Difficulty: &nbsp;<Star/><Star/><Star/></h3>}
+  let diffDic={"easy":<div  className="flex sn">Difficulty: &nbsp;<Star/></div>,"medium":<div className="flex sm">Difficulty: &nbsp;<Star/><Star/></div>,"hard":<div className="flex sm">Difficulty: &nbsp;<Star/><Star/><Star/></div>}
       let r=question["options"][question.correctOption];
   let s=question["options"][answer];
   return (<div>
-<div className="flex flex-col m-4"><h3>Category: {question.category}</h3>{width<1000?<div>{diffDic[question["difficulty"]]}</div>:<div className="quest">{question["difficulty"]}</div>}</div>
+<div className="flex flex-col m-4"><div className={`${width<1000?"sm":"quest"}`}>Category</div>{width<1000?<div>{diffDic[question["difficulty"]]}</div>:<div className="quest">{question["difficulty"]}</div>}</div>
     <div className="flex flex-col">
     {question.options.map((option, index) => (
         <button className={`m-2 btn btn-option  ${
