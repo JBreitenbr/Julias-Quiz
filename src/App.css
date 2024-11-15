@@ -17,7 +17,7 @@ h2 {
   font-size: calc(100vmin - 93vmin);
 }
 .quest {
-  font-size: calc(100vmin - 94vmin);
+  font-size: calc(100vmin - 96vmin);
 }
 
 h3,.quest-num {
@@ -38,6 +38,9 @@ h4{
   cursor: pointer;
   border-radius: 100px;
   transition: 0.3s;
+}
+.sel {
+  color: #437373;
 }
 .answer-right-selected {
   background-color: #119e7d;

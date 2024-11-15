@@ -69,6 +69,8 @@ export default function App() {
     dispatch,
   ] = useReducer(reducer, initialState);  
 
+//let [width, setWidth]=useState(window.innerWidth);
+//let [height, setHeight]=useState(window.innerHeight);
 const [numQuestions,setNumQuestions]=useState(20);
 
 const [cat,setCat]=useState("");
