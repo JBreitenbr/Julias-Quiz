@@ -69,8 +69,6 @@ export default function App() {
     dispatch,
   ] = useReducer(reducer, initialState);  
 
-//let [width, setWidth]=useState(window.innerWidth);
-//let [height, setHeight]=useState(window.innerHeight);
 const [numQuestions,setNumQuestions]=useState(20);
 
 const [cat,setCat]=useState("");
@@ -96,7 +94,7 @@ if(cat.length>0){
 .catch((err) => dispatch({ type: "dataFailed" }))
   }, [cat]);
   return (
-    <div className="wrapper">{status === "loading" && <Loader />}{status === "ready" && <StartScreen dispatch={dispatch} numQuestions={numQuestions} handleNum={handleNum} cat={cat} handleCat={handleCat} />}{status === "active" && (<div><p className="text-center mt-6 question">
+    <div className="wrapper">{status === "loading" && <Loader />}{status === "ready" && <StartScreen dispatch={dispatch} numQuestions={numQuestions} handleNum={handleNum} cat={cat} handleCat={handleCat} />}{status === "active" && (<div><p className="text-center mt-6 text-3xl">
         Question {index + 1} / {numQuestions}
       </p><Question
                   question={questions[index]}

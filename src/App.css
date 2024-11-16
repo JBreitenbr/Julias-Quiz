@@ -10,7 +10,7 @@ body {
   background-color: #3c5f57;
   /*padding: 2rem;*/
 }
-
+/*
 h1 {
   font-size: calc(100vmin - 91.5vmin);
 }
@@ -30,12 +30,12 @@ h2 {
 
 h4{
   font-size: calc(100vmin - 95vmin);
-}
+}*/
 .btn {
   display: block;
   font-family: inherit;
   color: #437373;
-  font-size: calc(100vmin - 97vmin);
+  /*font-size: calc(100vmin - 97vmin);*/
   border: 2px solid #437373;
   background-color: #f5f6f7;
   padding: 1.2rem ;
@@ -43,9 +43,9 @@ h4{
   border-radius: 100px;
   transition: 0.3s;
 }
-.btn-ui {
+/*.btn-ui {
   float: right;
-}
+}*/
 .sel {
   color: #437373;
 }

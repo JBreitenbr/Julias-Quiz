@@ -7,10 +7,10 @@ function Options({ question, dispatch, answer,width }) {
       let r=question["options"][question.correctOption];
   let s=question["options"][answer];
   return (<div>
-<div className="flex flex-col m-4"><div className={`${width<1000?"sm":"quest"}`}>Category: {question.category}</div>{width<1000?<div>{diffDic[question["difficulty"]]}</div>:<div className="quest">Difficulty:&nbsp;{question["difficulty"]}</div>}</div>
+<div className="flex flex-col m-4"><div className={`${width<1000?"text-xl":"text-2xl"}`}>Category: {question.category}</div>{width<1000?<div className="text-xl">{diffDic[question["difficulty"]]}</div>:<div className="text-2xl">Difficulty:&nbsp;{question["difficulty"]}</div>}</div>
     <div className="flex flex-col">
     {question.options.map((option, index) => (
-        <button className={`m-2 btn btn-option  ${
+        <button className={`m-2 btn btn-option text-xl ${
             hasAnswered
               ? index === question.correctOption && r!=s
                 ? "answer-right-unselected"
