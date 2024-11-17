@@ -4,7 +4,7 @@ function NextButton({ dispatch, answer, index, numQuestions }) {
   if (index < numQuestions - 1)
     return (
       <button
-        className="btn float-right text-xl"
+        className="btn float-right text-xl sm:text-2xl"
         onClick={() => dispatch({ type: "nextQuestion" })}
       >
         Next
@@ -14,7 +14,7 @@ function NextButton({ dispatch, answer, index, numQuestions }) {
   if (index === numQuestions - 1)
     return (
       <button
-        className="btn float-right text-xl"
+        className="btn float-right text-xl sm:text-2xl"
         onClick={() => dispatch({ type: "finish" })}
       >
         Finish

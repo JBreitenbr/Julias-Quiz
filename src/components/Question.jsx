@@ -5,7 +5,7 @@ function Question({ question, dispatch, answer }) {let [width, setWidth]=useStat
 
   return (
     <div>
-      <div className="text-center mt-6 mb-4 text-xl">{question.question}</div>
+      <div className="text-center mt-6 mb-4 text-xl sm:text-2xl">{question.question}</div>
       <Options question={question} dispatch={dispatch} answer={answer} width={width}/>
     </div>
   );
