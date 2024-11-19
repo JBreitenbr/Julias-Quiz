@@ -1,5 +1,5 @@
 import Star from './Star'
-//import { useState } from 'react'
+
 function Options({ question, dispatch, answer,width }) {
   const hasAnswered = answer !== null;
   question["options"]=question["optString"].split("/");
