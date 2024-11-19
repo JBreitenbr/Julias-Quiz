@@ -3,7 +3,6 @@ import { useState, useEffect,useReducer} from 'react'
 import Loader from './components/Loader'
 import StartScreen from './components/StartScreen.jsx'
 import Question from './components/Question.jsx'
-import Timer from './components/Timer.jsx'
 import NextButton from './components/NextButton.jsx'
 import FinishScreen from './components/FinishScreen.jsx'
 import {shuffle} from './shuffle.js'
@@ -12,7 +11,6 @@ import {shuffle} from './shuffle.js'
   medium: 20,
   hard: 30,
 }
-  const SECS_PER_QUESTION = 5;
   const initialState = {
   questions: [],
   status: "loading",
@@ -21,7 +19,6 @@ import {shuffle} from './shuffle.js'
   pnts: 0,
   hlp:0,
   highscore: 0,
-  secondsRemaining: null,
   maxPoints:0,
   ans:0
 };
@@ -43,7 +40,6 @@ function reducer(state, action) {
       return {
         ...state,
         status: "active",
-        secondsRemaining: state.questions.length * SECS_PER_QUESTION,
       };
     case "newAnswer":
       const question = state.questions.at(state.index);
@@ -63,24 +59,13 @@ function reducer(state, action) {
       return {
         ...state,
         status: "finished",
-      };    case "tick":
-      return {
-        ...state,
-        secondsRemaining: state.secondsRemaining - 1,
-        highscore:
-          state.secondsRemaining === 0
-            ? state.pnts > state.highscore
-              ? state.pnts
-              : state.highscore
-            : state.highscore,
-        status: state.secondsRemaining === 0 ? "finished" : state.status,
       };
     default:
       throw new Error("Action unknown");
   }}
 export default function App() {
   const [
-    { questions, status, index, answer, pnts, maxPoints, secondsRemaining, ans },
+    { questions, status, index, answer, pnts, maxPoints,ans },
     dispatch,
   ] = useReducer(reducer, initialState);  
 
@@ -115,7 +100,7 @@ if(cat.length>0){
                   question={questions[index]}
                   dispatch={dispatch}
                   answer={answer}
-                /><Timer dispatch={dispatch} secondsRemaining={secondsRemaining}/><NextButton
+                /><NextButton
                     dispatch={dispatch}
                     answer={answer}
                     numQuestions={numQuestions}
